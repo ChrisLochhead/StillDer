@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "menuitem.h"
+#include "tree.h"
 
 struct Menu{
 
@@ -17,10 +18,17 @@ struct Menu{
     {
         return menuName;
     }
+
+    void createTrees();
+
+    void addNode(TreeNode* current, MenuItem* item);
+
 private:
 
     QString menuName;
     QVector<MenuItem> items;
+
+    Tree* AlphabeticalTree;
 };
 
 #endif // MENU_H
