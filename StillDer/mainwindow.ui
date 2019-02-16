@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>698</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Images/Stillder UI/StillderBackground.png);
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="NewOrder">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>285</y>
+      <width>500</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#NewOrder
+{
+background: transparent;
+border-image: url(:/Images/Stillder UI/NewOrder/Normal-NewOrder.png);
+border: none;
+background: none;
+}
+
+#NewOrder:hover
+{
+border-image: url(:/Images/Stillder UI/NewOrder/Hover-NewOrder.png);
+}
+
+#NewOrder:pressed
+{
+border-image: url(:/Images/Stillder UI/NewOrder/Clicked-NewOrder.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OrderHistory">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>365</y>
+      <width>500</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#OrderHistory
+{
+background: transparent;
+border-image: url(:/Images/Stillder UI/OrderHistory/normal.png);
+border: none;
+background: none;
+}
+
+#OrderHistory:hover
+{
+border-image: url(:/Images/Stillder UI/OrderHistory/hover.png);
+}
+
+#OrderHistory:pressed
+{
+border-image: url(:/Images/Stillder UI/OrderHistory/clicked.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="AddMenu">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>445</y>
+      <width>500</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#AddMenu
+{
+background: transparent;
+border-image: url(:/Images/Stillder UI/AddMenu/normal.png);
+border: none;
+background: none;
+}
+
+#AddMenu:hover
+{
+border-image: url(:/Images/Stillder UI/AddMenu/hover.png);
+}
+
+#AddMenu:pressed
+{
+border-image: url(:/Images/Stillder UI/AddMenu/clicked.png);
+}
+	</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Exit">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>525</y>
+      <width>500</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#Exit
+{
+background: transparent;
+border-image: url(:/Images/Stillder UI/Exit/normal.png);
+border: none;
+background: none;
+}
+
+#Exit:hover
+{
+border-image: url(:/Images/Stillder UI/Exit/hover.png);
+}
+
+#Exit:pressed
+{
+border-image: url(:/Images/Stillder UI/Exit/clicked.png);
+}
+	</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="LoginPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>50</y>
+      <width>480</width>
+      <height>280</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>480</width>
+      <height>280</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>480</width>
+      <height>280</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#LoginPage
+{
+background-image: url(:/Images/Stillder UI/LoginMenu/MenuBackground.png);
+background-repeat: none;
+
+}</string>
+    </property>
+    <widget class="QPushButton" name="SignIn">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#SignIn
+{
+border: none;
+background-image: url(:/Images/Stillder UI/LoginMenu/SignInButton/normal.png);
+
+}
+
+#SignIn:hover
+{
+background-image: url(:/Images/Stillder UI/LoginMenu/SignInButton/hover.png);
+}
+
+#SignIn:pressed
+{
+background-image: url(:/Images/Stillder UI/LoginMenu/SignInButton/clicked.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="User">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>51</y>
+       <width>301</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#User
+{
+background-image: url(:/Images/Stillder UI/LoginMenu/Blank.png);
+
+}</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Pass">
+     <property name="geometry">
+      <rect>
+       <x>22</x>
+       <y>141</y>
+       <width>301</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Pass
+{
+background-image: url(:/Images/Stillder UI/LoginMenu/Blank.png);
+}</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="AddMenuScreen" native="true">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>330</y>
+      <width>491</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#AddMenuScreen
+{
+border: none;
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Background.png);
+background-repeat: none;
+}</string>
+    </property>
+    <widget class="QPushButton" name="Load">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>230</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Load
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Load/normal.png);
+border: none;
+}
+
+#Load:hover
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Load/hover.png);
+}
+
+#Load:pressed
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Load/clicked.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Cancel">
+     <property name="geometry">
+      <rect>
+       <x>185</x>
+       <y>230</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Cancel
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Cancel/normal.png);
+border: none;
+}
+
+#Cancel:hover
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Cancel/hover.png);
+}
+
+#Cancel:pressed
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Cancel/clicked.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="File">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>93</y>
+       <width>281</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#File{
+background-image: url(:/Images/Stillder UI/LoginMenu/Blank.png);
+border: none;
+}</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Browse">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>92</y>
+       <width>93</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Browse
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Browse/normal.png);
+border: none;
+background-repeat: none;
+}
+
+#Browse:hover
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Browse/hover.png);
+}
+
+#Browse:pressed
+{
+background-image: url(:/Images/Stillder UI/AddMenuScreen/Browse/clicked.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="Notification">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>0</y>
+      <width>491</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
