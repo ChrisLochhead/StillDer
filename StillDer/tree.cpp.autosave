@@ -1,0 +1,21 @@
+#include "tree.h"
+
+
+TreeNode::TreeNode(TreeNode* p, MenuItem* i)
+{
+    parent = p;
+    item = i;
+}
+TreeNode* TreeNode::getParent()
+{
+    return parent;
+}
+TreeNode* TreeNode::getChildren(int i)
+{
+    return children[i];
+}
+
+Tree::Tree(TreeNode* r)
+{
+    root = r;
+}
