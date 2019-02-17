@@ -3,7 +3,21 @@
 
 #include <QMainWindow>
 #include "menuitem.h"
+
 #include "tree.h"
+
+struct Tree{
+
+    Tree(TreeNode* r);
+
+    QString inOrderTraversal();
+    QString inOrderTraversal(QString orderString, TreeNode* current);
+
+    TreeNode* root;
+    QString name;
+
+
+};
 
 struct Menu{
 
@@ -21,7 +35,13 @@ struct Menu{
 
     void createTrees();
 
-    void addNode(TreeNode* current, MenuItem* item);
+    void addNode(TreeNode* current, MenuItem* item, int pos);
+
+    Tree* getTree()
+    {
+        return AlphabeticalTree;
+    }
+
 
 private:
 

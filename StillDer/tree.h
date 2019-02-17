@@ -2,25 +2,23 @@
 #define TREE_H
 
 #include <QString>
-#include <menu.h>
+#include <QDebug>
+#include "menuitem.h"
 
 class TreeNode{
 
 public:
-    TreeNode(TreeNode* p, MenuItem* i);
+
+    TreeNode(TreeNode* p, MenuItem *i);
 
     TreeNode* getParent();
     TreeNode* getChildren(int i);
+    void addChild(TreeNode *c, int pos);
 
-    void addChild(TreeNode* c, int pos);
-
-    MenuItem* getItem()
-    {
-        return item;
-    }
+    MenuItem* getItem();
 
 private:
-    MenuItem* item;
+    MenuItem* item = nullptr;
 
     TreeNode* parent;
     TreeNode* children[2];
@@ -28,12 +26,5 @@ private:
 
 };
 
-struct Tree{
-    Tree(TreeNode* r);
-
-    TreeNode* root;
-    QString name;
-
-};
 
 #endif // TREE_H

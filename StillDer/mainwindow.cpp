@@ -149,6 +149,10 @@ void MainWindow::on_Load_clicked()
     }
     qInfo() << m.getMenu().length();
     loggedUser->setMenu(m);
+    m.createTrees();
+ qInfo() << m.getTree()->inOrderTraversal();
+
+
 
     QDir dir("C:/Users/chris/OneDrive/Documents/AlgorithmsProject/StillDer/SavedMenus");
     QFile file(dir.path() + "/out.txt");
