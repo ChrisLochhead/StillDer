@@ -228,7 +228,7 @@ void NewOrderWindow::on_SelectSort_clicked()
     {
         ui->MenuList->clear();
         QVector<MenuItem>::iterator it;
-        Tree* mytree = selectedMenu.getTree();
+        Tree* mytree = selectedMenu.getTree(0);
         QVector<MenuItem> order =  mytree->inOrderTree;
         qInfo() << "name jeffr";
         for(it = order.begin(); it != order.end(); ++it)

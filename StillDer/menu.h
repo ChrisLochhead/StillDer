@@ -35,13 +35,19 @@ struct Menu{
         return menuName;
     }
 
-    void createTrees();
+    void createTrees(int treeType);
 
-    void addNode(TreeNode* current, MenuItem* item, int pos);
+    void addNode(TreeNode* current, MenuItem* item, int pos, int treetype);
 
-    Tree* getTree()
+    Tree* getTree(int treeType)
     {
+        if(treeType == 0)
         return AlphabeticalTree;
+        if(treeType == 1)
+        return CodeTree;
+        if(treeType == 2)
+        return PriceTree;
+
     }
 
     QVector<MenuItem> getInOrderTree()
@@ -55,6 +61,8 @@ private:
     QVector<MenuItem> items;
 
     Tree* AlphabeticalTree;
+    Tree* PriceTree;
+    Tree* CodeTree;
 
 };
 

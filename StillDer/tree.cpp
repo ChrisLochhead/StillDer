@@ -9,15 +9,18 @@ Tree::Tree(TreeNode* r)
 
 void Tree::inOrderTraversal(TreeNode *current)
 {
-    if(current != nullptr){
+        if(current != nullptr){
 
-        inOrderTraversal(current->getChildren(0));
+            inOrderTraversal(current->getChildren(0));
 
-        qInfo() << current->getItem()->name;
-        inOrderTree.push_back(*current->getItem());
-        qInfo() << inOrderTree.size();
-        inOrderTraversal(current->getChildren(1));
-    }
+            qInfo() << current->getItem()->name;
+            inOrderTree.push_back(*current->getItem());
+            qInfo() << inOrderTree.size();
+            inOrderTraversal(current->getChildren(1));
+        }
+
+
+
 }
 void Tree::inOrderTraversal()
 {

@@ -149,10 +149,20 @@ void MainWindow::on_Load_clicked()
     }
     qInfo() << m.getMenu().length();
 
-    m.createTrees();
-    m.getTree()->inOrderTraversal();
+
+
+    m.createTrees(0);
+    m.getTree(0)->inOrderTraversal();
+
+    m.createTrees(2);
+    m.getTree(2)->inOrderTraversal();
+
+    m.createTrees(1);
+    m.getTree(1)->inOrderTraversal();
+
+
+
     QVector<MenuItem> a = m.getInOrderTree();
-    Tree* mytree = m.getTree();
 
     loggedUser->setMenu(m);
 
