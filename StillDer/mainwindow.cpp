@@ -61,7 +61,7 @@ if(loggedIn == false){
 
 void MainWindow::on_AddMenu_clicked()
 {
-    //if(loggedIn == true)
+    if(loggedIn == true)
     ui->AddMenuScreen->show();
 
 }
@@ -148,9 +148,13 @@ void MainWindow::on_Load_clicked()
         lineCount++;
     }
     qInfo() << m.getMenu().length();
-    loggedUser->setMenu(m);
+
     m.createTrees();
-    m.setInOrderTree(m.getTree()->inOrderTraversal());
+    m.getTree()->inOrderTraversal();
+    QVector<MenuItem> a = m.getInOrderTree();
+    Tree* mytree = m.getTree();
+
+    loggedUser->setMenu(m);
 
 
     QDir dir("C:/Users/chris/OneDrive/Documents/AlgorithmsProject/StillDer/SavedMenus");
@@ -179,14 +183,13 @@ void MainWindow::on_Load_clicked()
 
 void MainWindow::on_NewOrder_clicked()
 {
-    //if(loggedIn == true)
-    //{
-        loggedUser = users.begin();
+    if(loggedIn == true)
+    {
         newOrder = new NewOrderWindow(this);
         setUser(0);
         newOrder->setMenus();
         newOrder->show();
-   // }
+    }
 }
 
 void MainWindow::on_OrderHistory_clicked()

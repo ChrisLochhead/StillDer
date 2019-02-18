@@ -36,12 +36,13 @@ private slots:
 
     void on_Save_clicked();
 
-    void on_Sort_currentIndexChanged(int index);
+    void on_SelectSort_clicked();
 
 private:
     Ui::NewOrderWindow *ui;
 
     User* user;
+    QVector<MenuItem> selectedMenu;
 
     int noOfItems = 0;
     double orderPrice = 0;

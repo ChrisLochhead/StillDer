@@ -25,6 +25,12 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/Images/Stillder UI/LoginMenu/blank.png);
+background-image: url(:/Images/Stillder UI/LoginMenu/blank.png);
+
+</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="Close">
    <property name="geometry">

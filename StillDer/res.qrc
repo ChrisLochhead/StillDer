@@ -53,5 +53,8 @@
         <file>Stillder UI/AddAndRemove/Remove/hover.png</file>
         <file>Stillder UI/AddAndRemove/Remove/normal.png</file>
         <file>Stillder UI/OrderHistoryInterface.png</file>
+        <file>Stillder UI/SortButton/clicked.png</file>
+        <file>Stillder UI/SortButton/hover.png</file>
+        <file>Stillder UI/SortButton/normal.png</file>
     </qresource>
 </RCC>

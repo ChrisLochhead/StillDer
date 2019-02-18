@@ -7,35 +7,33 @@ Tree::Tree(TreeNode* r)
 
 }
 
-QVector<MenuItem> Tree::inOrderTraversal(QVector<MenuItem> orderedMenu, TreeNode *current)
+void Tree::inOrderTraversal(TreeNode *current)
 {
-    if(current == nullptr) return orderedMenu;
+    if(current != nullptr){
 
-        inOrderTraversal(orderedMenu, current->getChildren(0));
+        inOrderTraversal(current->getChildren(0));
 
         qInfo() << current->getItem()->name;
-        orderedMenu.push_back(*current->getItem());
-
-        inOrderTraversal(orderedMenu, current->getChildren(1));
-        return orderedMenu;
+        inOrderTree.push_back(*current->getItem());
+        qInfo() << inOrderTree.size();
+        inOrderTraversal(current->getChildren(1));
     }
-QVector<MenuItem> Tree::inOrderTraversal()
+}
+void Tree::inOrderTraversal()
 {
 
-    QVector<MenuItem> inOrderMenu;
 
     //if the tree has a root
     if(root != nullptr)
     {
         // go into recursive function
-        inOrderMenu = inOrderTraversal(inOrderMenu, root);
+        inOrderTraversal(root);
 
     }
     else  // if there is no tree in this object
     {
-            qInfo() << "No tree detected" <<endl;
-            return inOrderMenu;
+        qInfo() << "No tree detected" <<endl;
+
     }
-    qInfo() << "Tree sucessfully parsed" <<endl;
-    return inOrderMenu;
+        qInfo() << "Tree sucessfully parsed" <<endl;
 }

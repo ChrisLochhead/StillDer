@@ -10,11 +10,13 @@ struct Tree{
 
     Tree(TreeNode* r);
 
-    QVector<MenuItem> inOrderTraversal();
-    QVector<MenuItem> inOrderTraversal(QVector<MenuItem> orderedMenu, TreeNode* current);
+    void inOrderTraversal();
+    void inOrderTraversal(TreeNode* current);
 
     TreeNode* root;
     QString name;
+
+    QVector<MenuItem> inOrderTree;
 
 
 };
@@ -42,14 +44,9 @@ struct Menu{
         return AlphabeticalTree;
     }
 
-    void setInOrderTree(QVector<MenuItem> newTree)
-    {
-        inOrderTree = newTree;
-    }
-
     QVector<MenuItem> getInOrderTree()
     {
-        return inOrderTree;
+        return AlphabeticalTree->inOrderTree;
     }
 
 private:
@@ -59,8 +56,6 @@ private:
 
     Tree* AlphabeticalTree;
 
-    //tree sort data
-    QVector<MenuItem> inOrderTree;
 };
 
 #endif // MENU_H

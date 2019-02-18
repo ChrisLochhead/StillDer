@@ -10,41 +10,71 @@ NewOrderWindow::NewOrderWindow(QWidget *parent) :
     ui->Sort->addItem("Sort");
     ui->Sort->addItem("sort A-Z");
 
-    QScrollBar* vBar = ui->OrderList->verticalScrollBar();
-    vBar->setStyleSheet("QScrollBar:vertical {"
+    QString vbarStyle = "QScrollBar:vertical {"
+                       "    border: 1px solid #999999;"
+                       "    background: none;"
+                       "    width:10px;    "
+                       "    margin: 0px 0px 0px 0px;"
+                       "}"
+                       "QScrollBar::handle:vertical {"
+                       "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                       "    stop: 0 rgb(200,191,231), stop: 0.5 rgb(200,191,231), stop:1 rgb(200,191,231));"
+                       "    min-height: 0px;"
+                       "}"
+                       "QScrollBar::add-line:vertical {"
+                       "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                       "    stop: 0 rgb(255,255,255), stop: 0.5 rgb(255,255,255),  stop:1 rgb(255,255,255));"
+                       "    height: 0px;"
+                       "    subcontrol-position: bottom;"
+                       "    subcontrol-origin: margin;"
+                       "}"
+                       "QScrollBar::sub-line:vertical {"
+                       "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                       "    stop: 0  rgb(255,255,255), stop: 0.5 rgb(255,255,255),  stop:1 rgb(255,255,255));"
+                       "    height: 0 px;"
+                       "    subcontrol-position: top;"
+                       "    subcontrol-origin: margin;"
+                       "}";
+
+    QString hBarStyle = "QScrollBar:horizontal {"
                         "    border: 1px solid #999999;"
                         "    background: none;"
                         "    width:10px;    "
                         "    margin: 0px 0px 0px 0px;"
                         "}"
-                        "QScrollBar::handle:vertical {"
+                        "QScrollBar::handle:horizontal {"
                         "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
                         "    stop: 0 rgb(200,191,231), stop: 0.5 rgb(200,191,231), stop:1 rgb(200,191,231));"
                         "    min-height: 0px;"
                         "}"
-                        "QScrollBar::add-line:vertical {"
+                        "QScrollBar::add-line:horizontal {"
                         "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
                         "    stop: 0 rgb(255,255,255), stop: 0.5 rgb(255,255,255),  stop:1 rgb(255,255,255));"
                         "    height: 0px;"
                         "    subcontrol-position: bottom;"
                         "    subcontrol-origin: margin;"
                         "}"
-                        "QScrollBar::sub-line:vertical {"
+                        "QScrollBar::sub-line:horizontal {"
                         "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
                         "    stop: 0  rgb(255,255,255), stop: 0.5 rgb(255,255,255),  stop:1 rgb(255,255,255));"
                         "    height: 0 px;"
                         "    subcontrol-position: top;"
                         "    subcontrol-origin: margin;"
-                        "}");
-
+                        "}";
+    QScrollBar* vBar = ui->OrderList->verticalScrollBar();
+    vBar->setStyleSheet(vbarStyle);
+    QScrollBar* hBar = ui->OrderList->horizontalScrollBar();
+    hBar->setStyleSheet(hBarStyle);
+    QScrollBar* ovBar = ui->MenuList->verticalScrollBar();
+    ovBar->setStyleSheet(vbarStyle);
+    QScrollBar* ohBar = ui->MenuList->horizontalScrollBar();
+    ohBar->setStyleSheet(hBarStyle);
 }
 
 void NewOrderWindow::setMenus()
 {
-    //ui->MenuList->clear();
 
     QVector<Menu> ms = user->getMenus();
-
     QVector<MenuItem>::iterator it;
     QVector<Menu>::iterator itt;
 
@@ -53,19 +83,16 @@ void NewOrderWindow::setMenus()
 
           QVector<MenuItem> mi = itt->getMenu();
 
-         // QVector<MenuItem> mii = itt->getInOrderTree();
-
           ui->MenuName->setText(itt->getName());
           ui->MenuSelect->addItem(itt->getName());
           QString str = itt->getName();
           str = str.simplified();
           str.replace( " ", "" );
           ui->SelectedMenu->setText("Menu: " + str);
-          ui->TotalOrderPrice->setText("Total Price: " + QString::number(orderPrice));
+          ui->TotalOrderPrice->setText("Total Price: £" + QString::number(orderPrice));
           QString s("Number of items: " + QString::number(noOfItems));
           ui->NoOfItems->setText(s);
 
-         // if(ui->Sort->currentIndex() == 0){
           for(it = mi.begin(); it != mi.end(); ++it)
           {
 
@@ -79,9 +106,10 @@ void NewOrderWindow::setMenus()
               tmp->setSizeHint(QSize(490,100));
 
               ui->MenuList->setItemWidget(tmp, menuIt);
-        //  }
-}
-    }
+
+      }
+
+   }
 }
 NewOrderWindow::~NewOrderWindow()
 {
@@ -96,6 +124,7 @@ void NewOrderWindow::on_Close_clicked()
 
 void NewOrderWindow::on_Add_clicked()
 {
+    if(ui->MenuList->currentItem()){
     qInfo() << ui->Sort->currentIndex();
     QListWidgetItem *w = ui->MenuList->currentItem();
 
@@ -124,7 +153,7 @@ void NewOrderWindow::on_Add_clicked()
    ui->NoOfItems->setText("Number of items: " + QString::number(noOfItems));
    ui->TotalOrderPrice->setText("Total price: " + QString::number(orderPrice));
 
-
+}
 
 }
 
@@ -190,11 +219,39 @@ void NewOrderWindow::on_Save_clicked()
 }
 
 
-void NewOrderWindow::on_Sort_currentIndexChanged(int index)
+
+void NewOrderWindow::on_SelectSort_clicked()
 {
+    qInfo() << user->getUser();
+    qInfo() << ui->MenuSelect->currentIndex()<<endl;
+    //int menuSelected = ui->MenuSelect->currentIndex();
+    QVector<Menu> menus = user->getMenus();
+    qInfo() << "namejeff";
+    Menu selectedMenu = menus.at(0);
 
 
 
-    if(index > 0) setMenus();
+    if(ui->Sort->currentIndex()  == 1)
+    {
+        ui->MenuList->clear();
+        QVector<MenuItem>::iterator it;
+        Tree* mytree = selectedMenu.getTree();
+        QVector<MenuItem> order =  mytree->inOrderTree;
+        qInfo() << "name jeffr";
+        for(it = order.begin(); it != order.end(); ++it)
+        {
 
+            QListWidgetItem* tmp = new QListWidgetItem(ui->MenuList);
+
+            ui->MenuList->addItem(tmp);
+
+            items *menuIt = new items;
+
+            menuIt->setUnits(it->code, it->name, it->unit, it->price);
+
+            tmp->setSizeHint(QSize(490,100));
+
+            ui->MenuList->setItemWidget(tmp, menuIt);
+        }
+    }
 }
