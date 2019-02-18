@@ -9,6 +9,9 @@ NewOrderWindow::NewOrderWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->Sort->addItem("Sort");
     ui->Sort->addItem("sort A-Z");
+    ui->Sort->addItem("sort by price (low to high)");
+    ui->Sort->addItem("sort by price (high to low)");
+    ui->Sort->addItem("sort by code");
 
     QString vbarStyle = "QScrollBar:vertical {"
                        "    border: 1px solid #999999;"
@@ -61,6 +64,7 @@ NewOrderWindow::NewOrderWindow(QWidget *parent) :
                         "    subcontrol-position: top;"
                         "    subcontrol-origin: margin;"
                         "}";
+
     QScrollBar* vBar = ui->OrderList->verticalScrollBar();
     vBar->setStyleSheet(vbarStyle);
     QScrollBar* hBar = ui->OrderList->horizontalScrollBar();
@@ -223,13 +227,18 @@ void NewOrderWindow::on_SelectSort_clicked()
     Menu selectedMenu = menus.at(0);
 
 
+    Tree* mytree;
+    if(ui->Sort->currentIndex()  == 1)  mytree = selectedMenu.getTree(0);
+    if(ui->Sort->currentIndex()  == 2 | ui->Sort->currentIndex() == 3)  mytree = selectedMenu.getTree(2);
+    if(ui->Sort->currentIndex()  == 4)  mytree = selectedMenu.getTree(1);
 
-    if(ui->Sort->currentIndex()  == 1)
-    {
         ui->MenuList->clear();
         QVector<MenuItem>::iterator it;
-        Tree* mytree = selectedMenu.getTree(0);
+
         QVector<MenuItem> order =  mytree->inOrderTree;
+
+        if(ui->Sort->currentIndex()==3) std::reverse(order.begin(), order.end());
+
         qInfo() << "name jeffr";
         for(it = order.begin(); it != order.end(); ++it)
         {
@@ -246,5 +255,5 @@ void NewOrderWindow::on_SelectSort_clicked()
 
             ui->MenuList->setItemWidget(tmp, menuIt);
         }
-    }
+
 }

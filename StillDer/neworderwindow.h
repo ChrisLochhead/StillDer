@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QListWidgetItem>
 #include <QDateTime>
+#include <algorithm>
 #include "user.h"
 
 namespace Ui {
