@@ -21,8 +21,7 @@ void OrderHistory::on_Close_clicked()
 
 void OrderHistory::setOrders()
 {
-    //cycle through all names
-    Menu m;
+
     //load any existing menus
     QDir dir("C:/Users/chris/OneDrive/Documents/AlgorithmsProject/StillDer/SavedOrders/" + user->getUser());
 
@@ -34,6 +33,9 @@ void OrderHistory::setOrders()
             //find a way to change style sheet of warning message
             qInfo() << "my name is jeffrey";
         }
+
+        //cycle through all names
+        Menu m;
 
         int lineCount = 0;
         QString line[300];
@@ -59,7 +61,7 @@ void OrderHistory::setOrders()
             ui->comboBox->addItem(menuName);
         }
 
-        if(lineCount > 2){
+        if(lineCount > 1){
 
         QStringList lineList = line[lineCount].split(",");
 

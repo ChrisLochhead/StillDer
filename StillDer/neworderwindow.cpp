@@ -151,7 +151,7 @@ void NewOrderWindow::on_Add_clicked()
     orderPrice += i->getItem("price").toDouble();
 
    ui->NoOfItems->setText("Number of items: " + QString::number(noOfItems));
-   ui->TotalOrderPrice->setText("Total price: " + QString::number(orderPrice));
+   ui->TotalOrderPrice->setText("Total price: £" + QString::number(orderPrice));
 
 }
 
@@ -172,7 +172,7 @@ void NewOrderWindow::on_Remove_clicked()
         orderPrice = 0;
 
     ui->NoOfItems->setText("Number of items: " + QString::number(noOfItems));
-    ui->TotalOrderPrice->setText("Total price: " + QString::number(orderPrice));
+    ui->TotalOrderPrice->setText("Total price: £" + QString::number(orderPrice));
 
         delete ui->OrderList->currentItem();
     }
@@ -196,23 +196,16 @@ void NewOrderWindow::on_Save_clicked()
     if(file.open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream txt(&file);
+        QStringList lineList = ui->MenuName->text().split(" ");
+        txt << lineList.value(0) << endl;
+        txt << "Product Code,Product Name ,Unit KG,Price Per Unit (£),Price Per KG X" << endl;
 
         for(int i =0; i < ui->OrderList->count(); i++)
         {
             QListWidgetItem *w = ui->OrderList->item(i);
-            items *it = dynamic_cast<items *>(ui->OrderList->itemWidget(w));
-            if(i == 0)
-            {
-                QStringList lineList = ui->MenuName->text().split(" ");
-                txt << lineList.value(0) << endl;
-            }
-            else if(i == 1)
-            {
-                txt << "Product Code,Product Name ,Unit KG,Price Per Unit (£),Price Per KG X" << endl;
-            }
-            else{
+            items *it = dynamic_cast<items *>(ui->OrderList->itemWidget(w)); 
             txt << it->getItem("code") + "," + it->getItem("name") + ","+ it->getItem("unit")+ "," + it->getItem("price") << endl;
-            }
+
         }
     }
 
