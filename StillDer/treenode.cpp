@@ -19,6 +19,7 @@ TreeNode* TreeNode::getChildren(int i)
 void TreeNode::addChild(TreeNode *c, int pos)
 {
    children[pos] = c;
+   qInfo() << children[pos]->getItem()->name << endl;
 }
 
 MenuItem* TreeNode::getItem()

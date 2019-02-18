@@ -36,6 +36,8 @@ private slots:
 
     void on_Save_clicked();
 
+    void on_Sort_currentIndexChanged(int index);
+
 private:
     Ui::NewOrderWindow *ui;
 

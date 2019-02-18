@@ -27,7 +27,7 @@ void Menu::createTrees()
             {
                 TreeNode* rootNode = new TreeNode(nullptr, it);
                 AlphabeticalTree = new Tree(rootNode);
-                qInfo() << rootNode->getItem()->name << endl;
+                qInfo() << "root node: " << rootNode->getItem()->name << endl;
             }
             else
             {  // if the name is closer to the start alphabetically than the root.
@@ -57,7 +57,6 @@ void Menu::createTrees()
                    //create a new node with the root as its parent, effectively adding it to the tree.
                    TreeNode* node = new TreeNode(tempNode, it);
                    tempNode->addChild(node, 0);
-                   qInfo() << node->getItem()->name << endl;
                    }else
                    {
                        //call recursive function to search the tree for empty nodes
@@ -107,11 +106,11 @@ else   // going right
         MenuItem* tmp = tempNode->getItem();
 
         if(QString::compare(tmp->name, item->name, Qt::CaseInsensitive) < 0 )
-        {//existing child is smaller than current item)
+        {   //existing child is smaller than current item)
             addNode(tempNode, item, 1);
         }
         else
-        { // existing child is bigger than current item
+        {   //existing child is bigger than current item
             addNode(tempNode, item, 0);
         }
     }else{

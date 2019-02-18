@@ -7,43 +7,35 @@ Tree::Tree(TreeNode* r)
 
 }
 
-QString Tree::inOrderTraversal(QString orderString, TreeNode *current)
+QVector<MenuItem> Tree::inOrderTraversal(QVector<MenuItem> orderedMenu, TreeNode *current)
 {
-    if(current!= nullptr && current->getChildren(0) != nullptr){
-    inOrderTraversal(orderString, current->getChildren(0));
+    if(current == nullptr) return orderedMenu;
+
+        inOrderTraversal(orderedMenu, current->getChildren(0));
+
+        qInfo() << current->getItem()->name;
+        orderedMenu.push_back(*current->getItem());
+
+        inOrderTraversal(orderedMenu, current->getChildren(1));
+        return orderedMenu;
     }
-    if(current != nullptr){
-    qInfo() << current->getItem()->name;
-    orderString += current->getItem()->name;
-    }
-    if(current != nullptr && current->getChildren(1) != nullptr){
-    inOrderTraversal(orderString, current->getChildren(1));
-    }
-    return orderString;
-}
-QString Tree::inOrderTraversal()
+QVector<MenuItem> Tree::inOrderTraversal()
 {
 
-    QString orderString;
+    QVector<MenuItem> inOrderMenu;
 
     //if the tree has a root
     if(root != nullptr)
     {
-        orderString = root->getItem()->name;
+        // go into recursive function
+        inOrderMenu = inOrderTraversal(inOrderMenu, root);
 
-        if(root->getChildren(0)!= nullptr){
-
-            orderString += inOrderTraversal(orderString, root->getChildren(0));
-        }
-        else
-        {
-            orderString += inOrderTraversal(orderString, root->getChildren(1));
-        }
     }
     else  // if there is no tree in this object
     {
-        return "No tree detected";
+            qInfo() << "No tree detected" <<endl;
+            return inOrderMenu;
     }
-
-    return orderString;
+    qInfo() << "Tree sucessfully parsed" <<endl;
+    return inOrderMenu;
 }

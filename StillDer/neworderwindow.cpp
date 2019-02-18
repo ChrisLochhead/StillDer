@@ -8,6 +8,8 @@ NewOrderWindow::NewOrderWindow(QWidget *parent) :
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     ui->setupUi(this);
     ui->Sort->addItem("Sort");
+    ui->Sort->addItem("sort A-Z");
+
     QScrollBar* vBar = ui->OrderList->verticalScrollBar();
     vBar->setStyleSheet("QScrollBar:vertical {"
                         "    border: 1px solid #999999;"
@@ -39,15 +41,20 @@ NewOrderWindow::NewOrderWindow(QWidget *parent) :
 
 void NewOrderWindow::setMenus()
 {
+    //ui->MenuList->clear();
 
     QVector<Menu> ms = user->getMenus();
 
-    QVector<Menu>::iterator itt;
     QVector<MenuItem>::iterator it;
+    QVector<Menu>::iterator itt;
 
     for (itt = ms.begin(); itt != ms.end(); ++itt) {
 
+
           QVector<MenuItem> mi = itt->getMenu();
+
+         // QVector<MenuItem> mii = itt->getInOrderTree();
+
           ui->MenuName->setText(itt->getName());
           ui->MenuSelect->addItem(itt->getName());
           QString str = itt->getName();
@@ -58,6 +65,7 @@ void NewOrderWindow::setMenus()
           QString s("Number of items: " + QString::number(noOfItems));
           ui->NoOfItems->setText(s);
 
+         // if(ui->Sort->currentIndex() == 0){
           for(it = mi.begin(); it != mi.end(); ++it)
           {
 
@@ -71,7 +79,8 @@ void NewOrderWindow::setMenus()
               tmp->setSizeHint(QSize(490,100));
 
               ui->MenuList->setItemWidget(tmp, menuIt);
-          }
+        //  }
+}
     }
 }
 NewOrderWindow::~NewOrderWindow()
@@ -87,7 +96,7 @@ void NewOrderWindow::on_Close_clicked()
 
 void NewOrderWindow::on_Add_clicked()
 {
-
+    qInfo() << ui->Sort->currentIndex();
     QListWidgetItem *w = ui->MenuList->currentItem();
 
     items *i = dynamic_cast<items *>(ui->MenuList->itemWidget(w));
@@ -180,3 +189,12 @@ void NewOrderWindow::on_Save_clicked()
 
 }
 
+
+void NewOrderWindow::on_Sort_currentIndexChanged(int index)
+{
+
+
+
+    if(index > 0) setMenus();
+
+}
