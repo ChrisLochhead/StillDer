@@ -1,7 +1,7 @@
-Still in development, made using the QT extension with visual studio 2015 community version.
+Currently version 1.9.0, made using the QT extension with visual studio 2015 community version.
 
 StillDer is an easy to use interface for handling stock data in an industrial kitchen environment. 
 
-Current functionality includes login functions, the ability to add new menu's, create your own order and save your orders, complete with pricing. 
+Current functionality includes login functions, the ability to add new menu's, create your own order and save your orders, complete with pricing. Sorting mechanisms using forests of trees, saving past menu's and orders and displaying said orders.
 
-Still to be added is functionality to sort menus by their variables, such as price, name, code or weight. Printing functionality has also still to be added for invoicing and price checking.
+Future functionality includes higher level data protection for login information and saved menus. The UI will likely be continually updated and the code itself is still largely due a tidy-up.
